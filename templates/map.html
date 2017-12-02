@@ -1,0 +1,7 @@
+{% block body %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<p>Please  <a href="/">login</a> first!</p>
+{% endif %}
+{% endblock %}
