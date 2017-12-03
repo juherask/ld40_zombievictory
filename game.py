@@ -2,7 +2,7 @@
 # A very simple Flask Hello World app for you to get started with...
 
 from flask import Flask
-from flask import flash, render_template, request, session
+from flask import flash, render_template, request, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
 import hashlib, uuid
