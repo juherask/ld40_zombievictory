@@ -87,7 +87,7 @@ def home():
                shelter_cnt = shelter_cnt,
                survivor_cnt = survivor_cnt,
                leader_cnt = leader_cnt,
-               leader_cnt = leader_cnt)
+               casuality_cnt = casuality_cnt)
 
 @app.route('/', methods=['POST'])
 def from_home():
