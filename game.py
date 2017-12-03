@@ -43,8 +43,8 @@ class Unit(db.Model):
     status = db.Column(db.String(32), default="quarantine")
     intitiated = db.Column(db.DateTime)
     finishes = db.Column(db.DateTime)
-    is_leader = db.Column(db.Bool, default=False)
-    is_zombie = db.Column(db.Bool, default=False)
+    is_leader = db.Column(db.Boolean, default=False)
+    is_zombie = db.Column(db.Boolean, default=False)
 
 class Leader(db.Model):
     __tablename__ = "leaders"
@@ -54,7 +54,7 @@ class Leader(db.Model):
     salt = db.Column(db.String(128))
     password_hash = db.Column(db.String(128))
     insanity = db.Column(db.Integer, default=0)
-    is_dead = db.Column(db.Bool, default=False)
+    is_dead = db.Column(db.Boolean, default=False)
 
 class Shelter(db.Model):
     __tablename__ = "shelters"
@@ -64,7 +64,7 @@ class Shelter(db.Model):
     x = db.Column(db.Integer)
     y = db.Column(db.Integer)
     level = db.Column(db.Integer, default=1)
-    is_abandoned = db.Column(db.Bool, default=False)
+    is_abandoned = db.Column(db.Boolean, default=False)
     resource_food = db.Column(db.Integer)
     resource_meds = db.Column(db.Integer)
     resource_guns = db.Column(db.Integer)
