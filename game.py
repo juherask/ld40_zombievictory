@@ -76,21 +76,8 @@ class Casuality(db.Model):
     owner_id = db.Column(db.Integer)
     killed_by = db.Column(db.String(512))
     
-@app.route('/')
-def home():
-    shelter_cnt = Shelter.query.count()
-    survivor_cnt = Unit.query.filter_by(is_zombie=False).count()
-    leader_cnt = Leader.query.count()
-    casuality_cnt = Casuality.query.count()
-    
-    return render_template('cover.html',
-               shelter_cnt = shelter_cnt,
-               survivor_cnt = survivor_cnt,
-               leader_cnt = leader_cnt,
-               casuality_cnt = casuality_cnt)
-
 @app.route('/', methods=['POST'])
-def from_home():
+def home():
     if request.method == 'POST':
         if request.form['submit'] == 'Play' and session['logged_in']:
             user_units = Unit.query.filter_by(owner_id=request.form['used_id'])
@@ -102,9 +89,20 @@ def from_home():
             return render_template('register.html')
         elif request.form['submit'] == 'Log in':
             return render_template('login.html')
-    
-    flash('invalid post!')
-    return redirect("/", code=302)
+        else:
+            flash('invalid post!')
+            return redirect("/", code=302)
+    else:
+        shelter_cnt = Shelter.query.count()
+        survivor_cnt = Unit.query.filter_by(is_zombie=False).count()
+        leader_cnt = Leader.query.count()
+        casuality_cnt = Casuality.query.count()
+        
+        return render_template('cover.html',
+                   shelter_cnt = shelter_cnt,
+                   survivor_cnt = survivor_cnt,
+                   leader_cnt = leader_cnt,
+                   casuality_cnt = casuality_cnt)
  
 @app.route('/login', methods=['POST'])
 def do_login():
