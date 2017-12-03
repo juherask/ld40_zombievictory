@@ -1,7 +1,17 @@
 {% block body %}
 {% if session['logged_in'] %}
-<p>You're logged in already!</p>
+    {% for unit in user_units %}
+        <p> unit, 
+        {{ unit.name }}
+        </p>
+    {%  endfor %}
+    
+    {% for shelter in user_shelters %}
+        <p> shelter, 
+        {{ shelter.name }}
+        </p>
+    {%  endfor %}
 {% else %}
-<p>Please  <a href="/">login</a> first!</p>
+    <p>Please  <a href="/">login</a> first!</p>
 {% endif %}
 {% endblock %}
