@@ -1,0 +1,94 @@
+@font-face{
+font-family: retro;
+src: url('FreePixel.ttf');
+}
+
+body            { font-family: retro; background: #000; }
+p, h1, h2, h3   { color: #80e819; }
+a               { color: #aacbe2; }
+h1              { border-bottom: 2px solid #eee; }
+h2              { font-size: 1.2em; }
+h3              { font-size: 1.0em; }
+
+.unitlist_view  { border: 3px solid #80e819; padding: 10px; float: left;
+                  width: 340px; height: 590px;}
+.map_view       { border: 3px solid #80e819; padding: 5px; margin-right: 5px;
+                  float: left; height: 600px; width: 600px;
+                  background-image: url("sjoki_map.png");
+                  background-size: cover; image-rendering: pixelated;
+                  }
+
+.page           { margin: 2em auto; width: 80%; border: 5px solid #80e819;
+                  padding: 0.8em; background: #222; }
+.metanav        { text-align: right; font-size: 0.8em; padding: 0.3em;
+                  margin-bottom: 1em; background: #fafafa; }
+.flash          { background: #cee5F5; padding: 0.5em;
+                  border: 1px solid #aacbe2; }
+.error          { background: #f0d6d6; padding: 0.5em; }
+
+.action_button  {  background-color: transparent;
+                   color: #80e819;
+                   font-family: retro; 
+                   border: 2px solid #80e819;
+                   font-size: 1.2em;}
+.action_button:hover {
+                   font-weight: bold;}
+
+.resource_img   { height: 32px; width: 32px; image-rendering: pixelated;}
+
+/* Custom checkbox form https://www.w3schools.com/howto/howto_css_custom_checkbox.asp*/
+.checkbox_container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox_container input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Create a custom checkbox */
+.checkbox_checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 19px;
+  width: 19px;
+  border: 2px solid #ff0000; 
+  /*background-color: #eee;*/
+  background-image: url("b_person.png");
+  background-color: #ff0000;
+  background-size: cover;
+  image-rendering: pixelated;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox_container:hover {
+  font-weight: bold;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox_checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  background-image: url("b_person_sel.png");
+  background-size: cover;
+  image-rendering: pixelated;
+}
+
+/* Show the checkmark when checked */
+.checkbox_container input:checked ~ .checkbox_checkmark {
+  /*display: block;*/
+  background-image: url("b_person_sel.png");
+}
+
+

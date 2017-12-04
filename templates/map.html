@@ -1,17 +1,44 @@
+{% extends "layout.html" %}
 {% block body %}
+
 {% if session['logged_in'] %}
-    {% for unit in user_units %}
-        <p> unit, 
-        {{ unit.name }}
+
+    <div class="map_view">two</div>
+    <div class="unitlist_view">
+    
+    <h2>Survivors</h2>
+    <form action="/action" method="POST">
+    {% for shelter in user_shelters %}
+        <h3> {{ shelter.name }} </h3>    
+        <p>
+        <img src="static/food.png" alt="food" class="resource_img"> {{ shelter.resource_food }}
+        <img src="static/meds.png" alt="meds" class="resource_img"> {{ shelter.resource_meds }}
+        <img src="static/guns.png" alt="guns" class="resource_img"> {{ shelter.resource_guns }}
         </p>
+        
+        {% for unit in user_units %}
+            {% if unit.shelter_id==shelter.id %}
+                <label class="checkbox_container"><p>{{ unit.name }}</p>
+                  <input type="checkbox" checked="checked">
+                  <span class="checkbox_checkmark"></span>
+                </label>
+            {% endif %}
+        {%  endfor %}    
     {%  endfor %}
     
-    {% for shelter in user_shelters %}
-        <p> shelter, 
-        {{ shelter.name }}
-        </p>
-    {%  endfor %}
+    </br>
+    
+    <input class="action_button" type="submit" value="Search">
+    <input class="action_button" type="submit" value="Fortify">
+    <input class="action_button" type="submit" value="Raid">
+    <input class="action_button" type="submit" value="Relocate">
+    
+    </form>
+    
+    </div>
+
 {% else %}
-    <p>Please  <a href="/">login</a> first!</p>
+    <p>Please  <a href="/login">login</a> first!</p>
 {% endif %}
+
 {% endblock %}
